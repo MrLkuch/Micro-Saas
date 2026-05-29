@@ -134,6 +134,61 @@ Trois vues principales ont été maquettées :
 
 ---
 
+## User Journey
+
+Parcours utilisateur modélisé pour préparer les entretiens utilisateurs sur les wireframes.  
+Chaque note représente le **niveau de satisfaction ressenti** (1 = frustrant, 5 = fluide).
+
+### Joueur — Construire et partager un roster
+
+```mermaid
+journey
+  title Joueur — Construire et partager un roster
+  section Découverte
+    Entendre parler de ForgeRoster       : 3 : Joueur
+    Visiter le site                      : 4 : Joueur
+    Créer un compte                      : 4 : Joueur
+  section Construction du roster
+    Choisir une faction                  : 5 : Joueur
+    Rechercher une unité dans le catalogue : 4 : Joueur
+    Ajouter une unité au roster          : 5 : Joueur
+    Vérifier le total de points          : 5 : Joueur
+    Ajuster la composition               : 4 : Joueur
+  section Calcul des probabilités
+    Sélectionner une unité attaquante    : 5 : Joueur
+    Lire les probabilités (toucher/blesser/sauvegarder) : 5 : Joueur
+    Comparer plusieurs combinaisons      : 4 : Joueur
+  section Partage avec l'adversaire
+    Générer un lien de partage           : 5 : Joueur
+    Copier le lien / QR code             : 5 : Joueur
+    Envoyer le lien à l'adversaire       : 5 : Joueur
+  section Export
+    Exporter le roster en PDF            : 4 : Joueur
+    Imprimer pour le tournoi             : 4 : Joueur
+```
+
+### Adversaire — Consulter un roster partagé
+
+```mermaid
+journey
+  title Adversaire — Consulter un roster reçu et préparer sa contre-liste
+  section Réception du lien
+    Recevoir le lien de partage          : 4 : Adversaire
+    Ouvrir le roster dans le navigateur  : 5 : Adversaire
+    Lire la liste des unités adverses    : 5 : Adversaire
+  section Analyse du roster adverse
+    Identifier les unités menaçantes     : 4 : Adversaire
+    Sélectionner une unité cible         : 5 : Adversaire
+    Lancer la simulation de combat       : 5 : Adversaire
+    Lire le graphe comparatif            : 4 : Adversaire
+  section Préparation de la contre-liste
+    Cliquer sur "Préparer ma liste"      : 4 : Adversaire
+    Créer son propre compte              : 3 : Adversaire
+    Construire sa liste en réponse       : 4 : Adversaire
+```
+
+---
+
 ## Identité visuelle
 
 | Élément | Valeur |
