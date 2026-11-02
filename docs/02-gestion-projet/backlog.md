@@ -82,6 +82,9 @@ En tant que joueur, je souhaite ajouter ou retirer un combattant depuis une fen�
 2. Étant donné un combattant du warband, quand sa quantité est augmentée ou réduite, alors le total et le solde sont mis à jour.
 3. Étant donné un combattant du warband, quand il est retiré, alors il disparaît et son coût, équipement compris, est recrédité sur le solde.
 4. Étant donné un warband d'une faction, quand l'API reçoit un combattant d'une autre faction, alors l'ajout est refusé.
+5. Étant donné un combattant dont la limite de recrutement est atteinte, quand un exemplaire de plus est ajouté, alors l'ajout est bloqué et un message l'explique.
+6. Étant donné 6 combattants de catégorie Chef ou Élite dans le warband, quand un septième est ajouté, alors l'ajout est bloqué et un message l'explique.
+7. Étant donné un warband qui n'atteint pas le minimum d'un combattant, comme un chef absent, quand il s'affiche, alors un avertissement indique ce qui manque et la sauvegarde reste possible.
 
 #### FR-204 — Suivre le budget en Ducats en temps réel
 
@@ -140,6 +143,7 @@ En tant que joueur, je souhaite associer des règles spéciales à mon warband a
 2. Étant donné une règle déjà associée, quand la liste des règles disponibles s'affiche, alors elle ne peut pas être ajoutée une seconde fois.
 3. Étant donné une règle active qui modifie un jet, quand le calcul est effectué, alors son effet est pris en compte et elle figure dans les modificateurs actifs.
 4. Étant donné une règle active, quand elle est retirée, alors son effet disparaît et les probabilités reviennent à leur valeur sans cette règle.
+5. Étant donné une règle réservée à une autre faction, quand la liste des règles s'affiche, alors elle n'est pas proposée.
 
 #### FR-501 — Gérer mes warbands sauvegardés
 
@@ -161,14 +165,15 @@ Must · S3 · 5 points
 
 En tant que joueur, je souhaite voir mes chances de succès, de critique et d'échec afin de décider de mes actions. Résultat affiché en moins de 200 ms.
 
-1. Étant donné un combattant et une action de mêlée ou de tir, quand ils sont sélectionnés, alors les probabilités d'échec, de succès et de critique s'affichent et leur somme fait 100 %, aux arrondis près.
+1. Étant donné un combattant et l'une de ses armes, quand ils sont sélectionnés, alors les probabilités d'échec, de succès et de critique s'affichent et leur somme fait 100 %, aux arrondis près.
 2. Étant donné un jet sans modificateur (2 dés), quand le calcul est effectué, alors le résultat est 41,67 % d'échec (somme de 2 à 6), 55,56 % de succès (7 à 11) et 2,78 % de critique (12 et plus).
 3. Étant donné +1 DICE (3 dés, les 2 plus hauts retenus), quand le calcul est effectué, alors le résultat est 19,44 % d'échec, 73,15 % de succès et 7,41 % de critique.
 4. Étant donné -1 DICE (3 dés, les 2 plus bas retenus), quand le calcul est effectué, alors le résultat est 68,06 % d'échec, 31,48 % de succès et 0,46 % de critique.
 5. Étant donné +2 DICE et -1 DICE sur le même jet, quand le calcul est effectué, alors les bonus et malus s'annulent par paires et le résultat est celui de +1 DICE.
 6. Étant donné un jet modifié, quand le résultat s'affiche, alors la liste des modificateurs actifs indique la source de chacun (équipement ou règle spéciale).
 7. Étant donné une modification du warband, quand elle est effectuée, alors les probabilités se mettent à jour en moins de 200 ms, sans appel au serveur.
-8. Étant donné aucun combattant sélectionné, quand le panneau s'affiche, alors aucun pourcentage n'apparaît et un message invite à en choisir un.
+8. Étant donné aucun combattant ou aucune arme sélectionnés, quand le panneau s'affiche, alors aucun pourcentage n'apparaît et un message invite à en choisir un.
+9. Étant donné un combattant portant deux armes, quand l'une est sélectionnée, alors seuls les bonus de cette arme s'appliquent.
 
 #### FR-307 — Lire les issues d'une attaque contre une cible
 
@@ -176,7 +181,7 @@ Should · S3 · 5 points
 
 En tant que joueur, je souhaite voir les issues possibles d'une attaque contre une cible afin de choisir mes combats. Résultat affiché en moins de 200 ms.
 
-1. Étant donné un combattant, une action et une cible, quand ils sont sélectionnés, alors les probabilités d'attaque ratée, d'aucun effet, de blessure légère, d'être à terre et d'être hors de combat s'affichent et leur somme fait 100 %, aux arrondis près.
+1. Étant donné un combattant, une arme et une cible, quand ils sont sélectionnés, alors les probabilités d'attaque ratée, d'aucun effet, de blessure légère, d'être à terre et d'être hors de combat s'affichent et leur somme fait 100 %, aux arrondis près.
 2. Étant donné un jet de blessure seul sans modificateur, quand le calcul est effectué, alors le résultat est 0 % d'aucun effet, 41,67 % de blessure légère, 30,56 % à terre et 27,78 % hors de combat.
 3. Étant donné un jet de blessure seul avec +1 INJURY DICE, quand le calcul est effectué, alors le résultat est 0 % d'aucun effet, 19,44 % de blessure légère, 28,24 % à terre et 52,31 % hors de combat.
 4. Étant donné un jet de blessure seul contre une armure de -1, quand le calcul est effectué, alors le résultat est 2,78 % d'aucun effet, 55,56 % de blessure légère, 25,00 % à terre et 16,67 % hors de combat.
@@ -202,6 +207,7 @@ En tant que joueur, je souhaite obtenir un lien unique et un QR code afin de mon
 5. Étant donné deux liens générés, quand ils sont comparés, alors leurs jetons sont différents et aucun ne contient l'identifiant du warband.
 6. Étant donné le warband d'un autre joueur, quand un lien est demandé, alors l'API refuse.
 7. Étant donné un lien actif, quand un nouveau lien est généré, alors le précédent ne fonctionne plus et un seul lien reste actif.
+8. Étant donné un warband incomplet, quand un lien est demandé, alors le partage est refusé et un message indique ce qui manque.
 
 #### FR-402 — Consulter un warband partagé
 
@@ -221,7 +227,7 @@ Should · S4 · 5 points
 
 En tant qu'adversaire, je souhaite simuler une attaque du warband partagé contre l'un de mes combattants afin de préparer la partie.
 
-1. Étant donné un warband partagé ouvert, quand un combattant de ce warband, une action et l'armure de la cible sont renseignés, alors les probabilités de réussite et les issues de l'attaque s'affichent, avec le même calcul que FR-302 et FR-307.
+1. Étant donné un warband partagé ouvert, quand un combattant de ce warband, une arme et l'armure de la cible sont renseignés, alors les probabilités de réussite et les issues de l'attaque s'affichent, avec le même calcul que FR-302 et FR-307.
 2. Étant donné un combattant équipé, quand la simulation s'affiche, alors son équipement et les règles spéciales de son warband sont appliqués et listés.
 3. Étant donné une simulation effectuée, quand la page est rechargée, alors le warband partagé n'a pas changé.
 4. Étant donné une simulation effectuée, quand elle se termine, alors rien n'est enregistré en base.
@@ -251,6 +257,7 @@ En tant que joueur, je souhaite télécharger mon warband en PDF afin de l'impri
 3. Étant donné le contenu par défaut, quand le PDF est ouvert, alors il indique le nom du warband, les Ducats dépensés, les combattants et leur équipement.
 4. Étant donné un contenu décoché, quand le PDF est généré, alors ce contenu n'y figure pas.
 5. Étant donné le warband d'un autre joueur, quand son export est demandé, alors l'API refuse.
+6. Étant donné un warband incomplet, quand l'export est demandé, alors il est refusé et un message indique ce qui manque.
 
 ### Administration
 
@@ -284,7 +291,5 @@ Ces deux User Stories sont classées Won't et ne sont pas planifiées. Elles n'o
 - **FR-505** : la page Historique devient Mes warbands.
 - **Versionnement** : retiré. La duplication d'un warband couvre le besoin.
 - **Filigrane PDF et filtre par rôle** : retirés des maquettes.
-
-## Point restant
-
-- **FR-303, FR-304, FR-305 et FR-307, forme des effets.** Les critères décrivent le comportement attendu. Le modèle de données doit encore évoluer pour représenter les +/-DICE, les +/-INJURY DICE et les modificateurs de blessure.
+- **FR-203, FR-401 et FR-502** : le minimum et le maximum de chaque combattant sont contrôlés. Un warband incomplet, par exemple sans chef, reste sauvegardable, mais ne peut être ni partagé ni exporté.
+- **FR-302, FR-307 et FR-403** : le joueur choisit une arme, dont les bonus ne comptent que pour cette attaque.
