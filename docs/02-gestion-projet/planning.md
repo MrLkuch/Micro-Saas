@@ -1,6 +1,6 @@
 # Planning — ForgeRoster
 
-Roadmap du projet, découpée en sprints. Le détail de chaque ticket (importable dans un outil de suivi) est dans [tickets.csv](tickets.csv). Les User Stories et leurs critères d'acceptation sont dans [backlog.md](backlog.md).
+Roadmap du projet, découpée en sprints. Le détail de chaque ticket est dans les [issues du dépôt](https://github.com/MrLkuch/Micro-Saas/issues). Les User Stories et leurs critères d'acceptation sont dans [backlog.md](backlog.md).
 
 ## Principes
 

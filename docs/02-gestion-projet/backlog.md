@@ -1,6 +1,6 @@
 # Backlog — ForgeRoster
 
-Ce document réunit les epics, les User Stories et leurs critères d'acceptation. Tous les tickets, y compris les tâches techniques, sont dans [tickets.csv](tickets.csv). L'ordre des sprints et le MVP sont expliqués dans [planning.md](planning.md).
+Ce document réunit les epics, les User Stories et leurs critères d'acceptation. Tous les tickets, y compris les tâches techniques, sont dans les [issues du dépôt](https://github.com/MrLkuch/Micro-Saas/issues). L'ordre des sprints et le MVP sont expliqués dans [planning.md](planning.md).
 
 Une User Story exprime un besoin utilisateur. Les tâches techniques restent des tickets à part : elles ne figurent pas ici. Chaque critère est vérifiable par un test et porte un numéro, à reprendre dans le plan de tests.
 
