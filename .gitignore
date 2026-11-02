@@ -1,3 +1,9 @@
 docs/03-conception/maquettes/maquette/*.svg
 docs/03-conception/maquettes/wireframe/*.svg
 suivi-semaine.md
+node_modules/
+dist/
+.angular/
+.env
+frontend/src/app/core/primeng-license.generated.ts
+.claude/
