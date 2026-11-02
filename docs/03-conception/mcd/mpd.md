@@ -180,7 +180,7 @@ Le total dépensé n'est pas stocké. Il se calcule par une requête sur les rec
 
 ## Vérification
 
-Le script a été exécuté sur PGlite 0.3.15, qui embarque PostgreSQL 17.5. La cible du projet est PostgreSQL 16 : le script n'utilise aucune fonctionnalité postérieure, mais il reste à rejouer sur la version cible une fois l'environnement Docker en place.
+Le script a été exécuté sur PGlite 0.5.8, qui embarque PostgreSQL 18.3, la version majeure visée par le projet. Il reste à le rejouer dans l'environnement Docker une fois celui-ci en place.
 
 | Vérification | Résultat |
 |---|---|
@@ -211,7 +211,7 @@ Le script a été exécuté sur PGlite 0.3.15, qui embarque PostgreSQL 17.5. La 
 
 - **Droits d'accès à la base.** Le référentiel demande de définir les utilisateurs de la base et leurs droits. À prévoir avec l'environnement Docker : un compte applicatif limité à la lecture et à l'écriture des données, sans droit de modifier la structure.
 - **Jeu de données de test** et sa sauvegarde, pour pouvoir restaurer la base.
-- **Choix de l'outil de migration.** Le cahier des charges prévoit Prisma, qui génère la structure à partir de son propre schéma. Il faudra décider lequel des deux, ce script ou le schéma Prisma, fait référence.
+- **Schéma Prisma.** Prisma est retenu. Son schéma et ses migrations font référence pour le développement, ce script reste la preuve du MPD dans le dossier. Le schéma Prisma reste à écrire (FR-101).
 - **Mise à jour de `updated_at`**, par l'application ou par un déclencheur.
 
 ## Hypothèse

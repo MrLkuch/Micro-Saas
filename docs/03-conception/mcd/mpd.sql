@@ -1,5 +1,5 @@
 -- ForgeRoster — Modèle Physique de Données
--- SGBD cible : PostgreSQL 16
+-- SGBD cible : PostgreSQL 18
 -- Ce script crée la structure complète de la base. Il est rejouable :
 -- il supprime les tables existantes avant de les recréer.
 
